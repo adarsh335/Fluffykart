@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+
+</head>
+<body>
+<div class="text-center"><h2>Add Category</h2></div>
+<div>
+  <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <form action="{% url 'DisplayCategory' %}">
+                    <button type="submit" class="btn btn-info font-weight-bold">Display Category</button>
+                  </form>
+                  <form class="forms-sample" method="post" action="{% url 'CategorySave' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <label for="exampleInputName1">Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Category Name" name="category">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Description</label>
+                      <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Description" name="description">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="exampleSelectGender">Sub Category</label>
+                        <select class="form-control" id="exampleSelectGender" name="subcat">
+                          <option>Dog</option>
+                          <option>Cat</option>
+                        </select>
+                      </div>
+                    <div class="form-group">
+                      <label>File upload</label>
+
+                      <div class="input-group col-xs-12">
+                        <input type="file" name="image" >
+<!--                        <span class="input-group-append">-->
+<!--                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>-->
+<!--                        </span>-->
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+</div>
+
+</body>
+
+</html>
+{% endblock %}

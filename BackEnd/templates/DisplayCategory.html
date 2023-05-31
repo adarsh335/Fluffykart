@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+
+</head>
+<body>
+<div class="text-center"><h2>Display Category</h2></div>
+<div class="card">
+                <div class="card-body">
+                  <form action="{% url 'CategoryPage' %}">
+                    <button type="submit" class="btn btn-info font-weight-bold">Add Category</button>
+                  </form>
+<!--                  <p class="card-description">-->
+<!--                    Add class <code>.table-bordered</code>-->
+<!--                  </p>-->
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>
+                           Category Name
+                          </th>
+                          <th>
+                            Description
+                          </th>
+                          <th>
+                            Subcategory
+                          </th>
+                          <th>
+                            Image
+                          </th>
+                          <th>
+                            Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for d in data %}
+                        <tr>
+                          <td>
+                            {{d.CategoryName}}
+                          </td>
+                          <td>
+                           {{d.Description}}
+                          </td>
+                          <td>
+                           {{d.SubCategory}}
+                          </td>
+                          <td>
+                          <img src=" {{d.CategoryImage.url}}" width="100px" height="100px">
+                          </td>
+                          <td>
+                            <form action="{% url 'EditCategory' dataid=d.id %}">
+                              <button type="submit">Edit</button>
+                            </form>
+                          </td>
+                           <td>
+                                <form action="{% url 'DeleteCategory' dataid=d.id %}">
+                              <button type="submit">Delete</button>
+                            </form>
+                          </td>
+                        </tr>
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+</body>
+
+</html>
+{% endblock %}
